@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5C383E31B2DE47000845F60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C383E21B2DE47000845F60 /* Images.xcassets */; };
+		A5C383E61B2DE47000845F60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C383E41B2DE47000845F60 /* Main.storyboard */; };
+		A5C384211B2FF7C400845F60 /* TKTokenField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C384161B2FF7C400845F60 /* TKTokenField.framework */; };
+		A5C3842A1B2FF7C500845F60 /* TKTokenFieldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384291B2FF7C500845F60 /* TKTokenFieldTests.m */; };
+		A5C3842D1B2FF7C500845F60 /* TKTokenField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C384161B2FF7C400845F60 /* TKTokenField.framework */; };
+		A5C3842E1B2FF7C500845F60 /* TKTokenField.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5C384161B2FF7C400845F60 /* TKTokenField.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5C3844F1B2FF9F100845F60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383DB1B2DE47000845F60 /* AppDelegate.m */; };
+		A5C384501B2FF9F100845F60 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383E01B2DE47000845F60 /* ViewController.m */; };
+		A5C384511B2FF9F100845F60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383DD1B2DE47000845F60 /* main.m */; };
+		A5C3845C1B2FFA0B00845F60 /* TKTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384531B2FFA0B00845F60 /* TKTokenField.m */; };
+		A5C3845D1B2FFA0B00845F60 /* TKTokenFieldAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384551B2FFA0B00845F60 /* TKTokenFieldAttachment.m */; };
+		A5C3845E1B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384571B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m */; };
+		A5C3845F1B2FFA0B00845F60 /* TKTokenFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384591B2FFA0B00845F60 /* TKTokenFieldCell.m */; };
+		A5C384601B2FFA0B00845F60 /* TKTokenTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3845B1B2FFA0B00845F60 /* TKTokenTextView.m */; };
+		A5C384611B2FFA2C00845F60 /* TKTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384531B2FFA0B00845F60 /* TKTokenField.m */; };
+		A5C384621B2FFA2C00845F60 /* TKTokenFieldAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384551B2FFA0B00845F60 /* TKTokenFieldAttachment.m */; };
+		A5C384631B2FFA2C00845F60 /* TKTokenFieldAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384571B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m */; };
+		A5C384641B2FFA2C00845F60 /* TKTokenFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384591B2FFA0B00845F60 /* TKTokenFieldCell.m */; };
+		A5C384651B2FFA2C00845F60 /* TKTokenTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3845B1B2FFA0B00845F60 /* TKTokenTextView.m */; };
+		A5C384661B2FFA3800845F60 /* TKTokenField.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C384521B2FFA0B00845F60 /* TKTokenField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5C384671B2FFA3800845F60 /* TKTokenFieldAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C384541B2FFA0B00845F60 /* TKTokenFieldAttachment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5C384681B2FFA3800845F60 /* TKTokenFieldAttachmentCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C384561B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5C384691B2FFA3800845F60 /* TKTokenFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C384581B2FFA0B00845F60 /* TKTokenFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5C3846A1B2FFA3800845F60 /* TKTokenTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3845A1B2FFA0B00845F60 /* TKTokenTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5C3846C1B2FFA4A00845F60 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C3846B1B2FFA4A00845F60 /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5C384221B2FF7C400845F60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5C383CD1B2DE47000845F60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5C384151B2FF7C400845F60;
+			remoteInfo = TKTokenField;
+		};
+		A5C384241B2FF7C500845F60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5C383CD1B2DE47000845F60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5C383D41B2DE47000845F60;
+			remoteInfo = CustomTokenField;
+		};
+		A5C3842B1B2FF7C500845F60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5C383CD1B2DE47000845F60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5C384151B2FF7C400845F60;
+			remoteInfo = TKTokenField;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A5C384341B2FF7C500845F60 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A5C3842E1B2FF7C500845F60 /* TKTokenField.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A5C383D51B2DE47000845F60 /* CustomTokenField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomTokenField.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C383D91B2DE47000845F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5C383DA1B2DE47000845F60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CustomTokenField/AppDelegate.h; sourceTree = "<group>"; };
+		A5C383DB1B2DE47000845F60 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CustomTokenField/AppDelegate.m; sourceTree = "<group>"; };
+		A5C383DD1B2DE47000845F60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A5C383DF1B2DE47000845F60 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = CustomTokenField/ViewController.h; sourceTree = "<group>"; };
+		A5C383E01B2DE47000845F60 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = CustomTokenField/ViewController.m; sourceTree = "<group>"; };
+		A5C383E21B2DE47000845F60 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CustomTokenField/Images.xcassets; sourceTree = "<group>"; };
+		A5C383E51B2DE47000845F60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5C384161B2FF7C400845F60 /* TKTokenField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TKTokenField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C384191B2FF7C400845F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5C384201B2FF7C400845F60 /* TKTokenFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TKTokenFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C384281B2FF7C500845F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5C384291B2FF7C500845F60 /* TKTokenFieldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKTokenFieldTests.m; sourceTree = "<group>"; };
+		A5C384521B2FFA0B00845F60 /* TKTokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKTokenField.h; path = TKTokenField/TKTokenField.h; sourceTree = SOURCE_ROOT; };
+		A5C384531B2FFA0B00845F60 /* TKTokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKTokenField.m; path = TKTokenField/TKTokenField.m; sourceTree = SOURCE_ROOT; };
+		A5C384541B2FFA0B00845F60 /* TKTokenFieldAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKTokenFieldAttachment.h; path = TKTokenField/TKTokenFieldAttachment.h; sourceTree = SOURCE_ROOT; };
+		A5C384551B2FFA0B00845F60 /* TKTokenFieldAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKTokenFieldAttachment.m; path = TKTokenField/TKTokenFieldAttachment.m; sourceTree = SOURCE_ROOT; };
+		A5C384561B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKTokenFieldAttachmentCell.h; path = TKTokenField/TKTokenFieldAttachmentCell.h; sourceTree = SOURCE_ROOT; };
+		A5C384571B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKTokenFieldAttachmentCell.m; path = TKTokenField/TKTokenFieldAttachmentCell.m; sourceTree = SOURCE_ROOT; };
+		A5C384581B2FFA0B00845F60 /* TKTokenFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKTokenFieldCell.h; path = TKTokenField/TKTokenFieldCell.h; sourceTree = SOURCE_ROOT; };
+		A5C384591B2FFA0B00845F60 /* TKTokenFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKTokenFieldCell.m; path = TKTokenField/TKTokenFieldCell.m; sourceTree = SOURCE_ROOT; };
+		A5C3845A1B2FFA0B00845F60 /* TKTokenTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKTokenTextView.h; path = TKTokenField/TKTokenTextView.h; sourceTree = SOURCE_ROOT; };
+		A5C3845B1B2FFA0B00845F60 /* TKTokenTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKTokenTextView.m; path = TKTokenField/TKTokenTextView.m; sourceTree = SOURCE_ROOT; };
+		A5C3846B1B2FFA4A00845F60 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5C383D21B2DE47000845F60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C3842D1B2FF7C500845F60 /* TKTokenField.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C384121B2FF7C400845F60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C3846C1B2FFA4A00845F60 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C3841D1B2FF7C400845F60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C384211B2FF7C400845F60 /* TKTokenField.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5C383CC1B2DE47000845F60 = {
+			isa = PBXGroup;
+			children = (
+				A5C3846B1B2FFA4A00845F60 /* Cocoa.framework */,
+				A5C3844E1B2FF93300845F60 /* TestApp */,
+				A5C384171B2FF7C400845F60 /* TKTokenField */,
+				A5C384261B2FF7C500845F60 /* TKTokenFieldTests */,
+				A5C383D61B2DE47000845F60 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5C383D61B2DE47000845F60 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5C383D51B2DE47000845F60 /* CustomTokenField.app */,
+				A5C384161B2FF7C400845F60 /* TKTokenField.framework */,
+				A5C384201B2FF7C400845F60 /* TKTokenFieldTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5C383D81B2DE47000845F60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5C383D91B2DE47000845F60 /* Info.plist */,
+				A5C383DD1B2DE47000845F60 /* main.m */,
+			);
+			name = "Supporting Files";
+			path = CustomTokenField;
+			sourceTree = "<group>";
+		};
+		A5C384171B2FF7C400845F60 /* TKTokenField */ = {
+			isa = PBXGroup;
+			children = (
+				A5C384521B2FFA0B00845F60 /* TKTokenField.h */,
+				A5C384531B2FFA0B00845F60 /* TKTokenField.m */,
+				A5C384541B2FFA0B00845F60 /* TKTokenFieldAttachment.h */,
+				A5C384551B2FFA0B00845F60 /* TKTokenFieldAttachment.m */,
+				A5C384561B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.h */,
+				A5C384571B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m */,
+				A5C384581B2FFA0B00845F60 /* TKTokenFieldCell.h */,
+				A5C384591B2FFA0B00845F60 /* TKTokenFieldCell.m */,
+				A5C3845A1B2FFA0B00845F60 /* TKTokenTextView.h */,
+				A5C3845B1B2FFA0B00845F60 /* TKTokenTextView.m */,
+				A5C384181B2FF7C400845F60 /* Supporting Files */,
+			);
+			path = TKTokenField;
+			sourceTree = "<group>";
+		};
+		A5C384181B2FF7C400845F60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5C384191B2FF7C400845F60 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5C384261B2FF7C500845F60 /* TKTokenFieldTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5C384291B2FF7C500845F60 /* TKTokenFieldTests.m */,
+				A5C384271B2FF7C500845F60 /* Supporting Files */,
+			);
+			path = TKTokenFieldTests;
+			sourceTree = "<group>";
+		};
+		A5C384271B2FF7C500845F60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5C384281B2FF7C500845F60 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5C3844E1B2FF93300845F60 /* TestApp */ = {
+			isa = PBXGroup;
+			children = (
+				A5C383DA1B2DE47000845F60 /* AppDelegate.h */,
+				A5C383DB1B2DE47000845F60 /* AppDelegate.m */,
+				A5C383DF1B2DE47000845F60 /* ViewController.h */,
+				A5C383E01B2DE47000845F60 /* ViewController.m */,
+				A5C383E21B2DE47000845F60 /* Images.xcassets */,
+				A5C383E41B2DE47000845F60 /* Main.storyboard */,
+				A5C383D81B2DE47000845F60 /* Supporting Files */,
+			);
+			name = TestApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A5C384131B2FF7C400845F60 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C384661B2FFA3800845F60 /* TKTokenField.h in Headers */,
+				A5C384671B2FFA3800845F60 /* TKTokenFieldAttachment.h in Headers */,
+				A5C384681B2FFA3800845F60 /* TKTokenFieldAttachmentCell.h in Headers */,
+				A5C384691B2FFA3800845F60 /* TKTokenFieldCell.h in Headers */,
+				A5C3846A1B2FFA3800845F60 /* TKTokenTextView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A5C383D41B2DE47000845F60 /* CustomTokenField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5C383F51B2DE47000845F60 /* Build configuration list for PBXNativeTarget "CustomTokenField" */;
+			buildPhases = (
+				A5C383D11B2DE47000845F60 /* Sources */,
+				A5C383D21B2DE47000845F60 /* Frameworks */,
+				A5C383D31B2DE47000845F60 /* Resources */,
+				A5C384341B2FF7C500845F60 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5C3842C1B2FF7C500845F60 /* PBXTargetDependency */,
+			);
+			name = CustomTokenField;
+			productName = CustomTokenField;
+			productReference = A5C383D51B2DE47000845F60 /* CustomTokenField.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5C384151B2FF7C400845F60 /* TKTokenField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5C384331B2FF7C500845F60 /* Build configuration list for PBXNativeTarget "TKTokenField" */;
+			buildPhases = (
+				A5C384111B2FF7C400845F60 /* Sources */,
+				A5C384121B2FF7C400845F60 /* Frameworks */,
+				A5C384131B2FF7C400845F60 /* Headers */,
+				A5C384141B2FF7C400845F60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TKTokenField;
+			productName = TKTokenField;
+			productReference = A5C384161B2FF7C400845F60 /* TKTokenField.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A5C3841F1B2FF7C400845F60 /* TKTokenFieldTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5C384351B2FF7C500845F60 /* Build configuration list for PBXNativeTarget "TKTokenFieldTests" */;
+			buildPhases = (
+				A5C3841C1B2FF7C400845F60 /* Sources */,
+				A5C3841D1B2FF7C400845F60 /* Frameworks */,
+				A5C3841E1B2FF7C400845F60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5C384231B2FF7C400845F60 /* PBXTargetDependency */,
+				A5C384251B2FF7C500845F60 /* PBXTargetDependency */,
+			);
+			name = TKTokenFieldTests;
+			productName = TKTokenFieldTests;
+			productReference = A5C384201B2FF7C400845F60 /* TKTokenFieldTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5C383CD1B2DE47000845F60 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Taktik SA";
+				TargetAttributes = {
+					A5C383D41B2DE47000845F60 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					A5C384151B2FF7C400845F60 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					A5C3841F1B2FF7C400845F60 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = A5C383D41B2DE47000845F60;
+					};
+				};
+			};
+			buildConfigurationList = A5C383D01B2DE47000845F60 /* Build configuration list for PBXProject "TKTokenField" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5C383CC1B2DE47000845F60;
+			productRefGroup = A5C383D61B2DE47000845F60 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5C383D41B2DE47000845F60 /* CustomTokenField */,
+				A5C384151B2FF7C400845F60 /* TKTokenField */,
+				A5C3841F1B2FF7C400845F60 /* TKTokenFieldTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5C383D31B2DE47000845F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C383E31B2DE47000845F60 /* Images.xcassets in Resources */,
+				A5C383E61B2DE47000845F60 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C384141B2FF7C400845F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C3841E1B2FF7C400845F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5C383D11B2DE47000845F60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C3845F1B2FFA0B00845F60 /* TKTokenFieldCell.m in Sources */,
+				A5C3845E1B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m in Sources */,
+				A5C3844F1B2FF9F100845F60 /* AppDelegate.m in Sources */,
+				A5C3845C1B2FFA0B00845F60 /* TKTokenField.m in Sources */,
+				A5C384601B2FFA0B00845F60 /* TKTokenTextView.m in Sources */,
+				A5C384501B2FF9F100845F60 /* ViewController.m in Sources */,
+				A5C384511B2FF9F100845F60 /* main.m in Sources */,
+				A5C3845D1B2FFA0B00845F60 /* TKTokenFieldAttachment.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C384111B2FF7C400845F60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C384611B2FFA2C00845F60 /* TKTokenField.m in Sources */,
+				A5C384621B2FFA2C00845F60 /* TKTokenFieldAttachment.m in Sources */,
+				A5C384631B2FFA2C00845F60 /* TKTokenFieldAttachmentCell.m in Sources */,
+				A5C384641B2FFA2C00845F60 /* TKTokenFieldCell.m in Sources */,
+				A5C384651B2FFA2C00845F60 /* TKTokenTextView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C3841C1B2FF7C400845F60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C3842A1B2FF7C500845F60 /* TKTokenFieldTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5C384231B2FF7C400845F60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5C384151B2FF7C400845F60 /* TKTokenField */;
+			targetProxy = A5C384221B2FF7C400845F60 /* PBXContainerItemProxy */;
+		};
+		A5C384251B2FF7C500845F60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5C383D41B2DE47000845F60 /* CustomTokenField */;
+			targetProxy = A5C384241B2FF7C500845F60 /* PBXContainerItemProxy */;
+		};
+		A5C3842C1B2FF7C500845F60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5C384151B2FF7C400845F60 /* TKTokenField */;
+			targetProxy = A5C3842B1B2FF7C500845F60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5C383E41B2DE47000845F60 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5C383E51B2DE47000845F60 /* Base */,
+			);
+			name = Main.storyboard;
+			path = CustomTokenField;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5C383F31B2DE47000845F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A5C383F41B2DE47000845F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A5C383F61B2DE47000845F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CustomTokenField/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A5C383F71B2DE47000845F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CustomTokenField/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A5C3842F1B2FF7C500845F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TKTokenField/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A5C384301B2FF7C500845F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = TKTokenField/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A5C384311B2FF7C500845F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TKTokenFieldTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomTokenField.app/Contents/MacOS/CustomTokenField";
+			};
+			name = Debug;
+		};
+		A5C384321B2FF7C500845F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TKTokenFieldTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomTokenField.app/Contents/MacOS/CustomTokenField";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5C383D01B2DE47000845F60 /* Build configuration list for PBXProject "TKTokenField" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C383F31B2DE47000845F60 /* Debug */,
+				A5C383F41B2DE47000845F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5C383F51B2DE47000845F60 /* Build configuration list for PBXNativeTarget "CustomTokenField" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C383F61B2DE47000845F60 /* Debug */,
+				A5C383F71B2DE47000845F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5C384331B2FF7C500845F60 /* Build configuration list for PBXNativeTarget "TKTokenField" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C3842F1B2FF7C500845F60 /* Debug */,
+				A5C384301B2FF7C500845F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5C384351B2FF7C500845F60 /* Build configuration list for PBXNativeTarget "TKTokenFieldTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C384311B2FF7C500845F60 /* Debug */,
+				A5C384321B2FF7C500845F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5C383CD1B2DE47000845F60 /* Project object */;
+}
