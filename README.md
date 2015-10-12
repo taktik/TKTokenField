@@ -9,3 +9,6 @@ TODOs
 * Support pasteboard delegates
 * Support cocoapods
 * Tests
+
+Usage
+Drag a Text Field from IB library. The class of the text field must be set to TKTokenField, the cell class to TKTokenFieldCell. The rich text option of the NSTextField *MUST* be clicked.
