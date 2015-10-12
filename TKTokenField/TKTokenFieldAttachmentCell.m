@@ -121,7 +121,11 @@ static CGFloat const kOEXTokenAttachmentTokenMargin = 3;
     NSColor *textColor = [self tokenTitleColorForDrawingMode:self.tokenDrawingMode];
     NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
     style.lineBreakMode = NSLineBreakByTruncatingTail;
-    [self.stringValue drawInRect:rect withAttributes:@{NSFontAttributeName:self.font, NSForegroundColorAttributeName:textColor, NSParagraphStyleAttributeName:style}];
+    
+    NSMutableDictionary * attributes = [@{NSFontAttributeName:self.font, NSForegroundColorAttributeName:textColor, NSParagraphStyleAttributeName:style} mutableCopy];
+    if (self.extraAttributes) { [attributes addEntriesFromDictionary:self.extraAttributes]; }
+    
+    [self.stringValue drawInRect:rect withAttributes:attributes];
 }
 
 

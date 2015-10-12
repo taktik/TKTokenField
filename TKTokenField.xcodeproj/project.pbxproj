@@ -16,11 +16,6 @@
 		A5C3844F1B2FF9F100845F60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383DB1B2DE47000845F60 /* AppDelegate.m */; };
 		A5C384501B2FF9F100845F60 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383E01B2DE47000845F60 /* ViewController.m */; };
 		A5C384511B2FF9F100845F60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383DD1B2DE47000845F60 /* main.m */; };
-		A5C3845C1B2FFA0B00845F60 /* TKTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384531B2FFA0B00845F60 /* TKTokenField.m */; };
-		A5C3845D1B2FFA0B00845F60 /* TKTokenFieldAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384551B2FFA0B00845F60 /* TKTokenFieldAttachment.m */; };
-		A5C3845E1B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384571B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m */; };
-		A5C3845F1B2FFA0B00845F60 /* TKTokenFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384591B2FFA0B00845F60 /* TKTokenFieldCell.m */; };
-		A5C384601B2FFA0B00845F60 /* TKTokenTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3845B1B2FFA0B00845F60 /* TKTokenTextView.m */; };
 		A5C384611B2FFA2C00845F60 /* TKTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384531B2FFA0B00845F60 /* TKTokenField.m */; };
 		A5C384621B2FFA2C00845F60 /* TKTokenFieldAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384551B2FFA0B00845F60 /* TKTokenFieldAttachment.m */; };
 		A5C384631B2FFA2C00845F60 /* TKTokenFieldAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384571B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m */; };
@@ -296,7 +291,7 @@
 		A5C383CD1B2DE47000845F60 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Taktik SA";
 				TargetAttributes = {
 					A5C383D41B2DE47000845F60 = {
@@ -362,14 +357,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C3845F1B2FFA0B00845F60 /* TKTokenFieldCell.m in Sources */,
-				A5C3845E1B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m in Sources */,
 				A5C3844F1B2FF9F100845F60 /* AppDelegate.m in Sources */,
-				A5C3845C1B2FFA0B00845F60 /* TKTokenField.m in Sources */,
-				A5C384601B2FFA0B00845F60 /* TKTokenTextView.m in Sources */,
 				A5C384501B2FF9F100845F60 /* ViewController.m in Sources */,
 				A5C384511B2FF9F100845F60 /* main.m in Sources */,
-				A5C3845D1B2FFA0B00845F60 /* TKTokenFieldAttachment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +437,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -512,6 +503,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CustomTokenField/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.taktik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -523,6 +515,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CustomTokenField/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.taktik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -542,8 +535,9 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = TKTokenField/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.taktik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -562,8 +556,9 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = TKTokenField/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.taktik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -585,6 +580,7 @@
 				);
 				INFOPLIST_FILE = TKTokenFieldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.taktik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomTokenField.app/Contents/MacOS/CustomTokenField";
 			};
@@ -600,6 +596,7 @@
 				);
 				INFOPLIST_FILE = TKTokenFieldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.taktik.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomTokenField.app/Contents/MacOS/CustomTokenField";
 			};

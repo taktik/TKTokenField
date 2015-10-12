@@ -12,6 +12,18 @@
 #import "TKTokenFieldAttachment.h"
 #import "TKTokenFieldAttachmentCell.h"
 
+@interface TKTokenField(private)
+- (id<TKTokenFieldDelegate>) tkd;
+@end
+
+
+@implementation TKTokenField(private)
+- (id<TKTokenFieldDelegate>) tkd {
+    return (id<TKTokenFieldDelegate>)[self delegate];
+}
+@end
+
+
 @implementation TKTokenField
 
 //
@@ -39,33 +51,49 @@
     return self;
 }
 
-- (TKTokenFieldAttachment *)makeTokenFieldAttachment:(NSString*) tokenString range:(NSRange) range {
-    TKTokenFieldAttachment *token = nil;
-    if ([[self delegate] respondsToSelector:@selector(tokenField:makeAttachmentForString:inRange:)]) {
-        token = [(id<TKTokenFieldDelegate>)[self delegate] tokenField:self makeAttachmentForString:tokenString inRange:range];
+- (TKTokenFieldAttachment *)makeTokenFieldAttachment:(id)representedObject editingString:(NSString*)tokenString range:(NSRange) range {
+    TKTokenFieldAttachment * token = nil;
+    if (representedObject && [[self delegate] respondsToSelector:@selector(tokenField:makeAttachment:editingString:inRange:)]) {
+        if (!tokenString && [[self delegate] respondsToSelector:@selector(tokenField:displayStringForRepresentedObject:)]) {
+            tokenString = [self.tkd tokenField:self displayStringForRepresentedObject:representedObject];
+        }
+        token = [self.tkd tokenField:self makeAttachment:representedObject editingString:tokenString inRange:range];
     }
     if (!token) {
         token = [TKTokenFieldAttachment new];
         
-        if ([[self delegate] respondsToSelector:@selector(tokenField:representedObjectForEditingString:)]) {
-            [token setContent:[(id<TKTokenFieldDelegate>)[self delegate] tokenField:(TKTokenField*)self representedObjectForEditingString:tokenString]];
+        if (representedObject) {
+            [token setContent:representedObject];
+        } else if ([[self delegate] respondsToSelector:@selector(tokenField:representedObjectForEditingString:)]) {
+            [token setContent:[self.tkd tokenField:(TKTokenField*)self representedObjectForEditingString:tokenString]];
         } else {
             [token setContent:tokenString];
         }
-        [token setAttachmentCell:[[TKTokenFieldAttachmentCell alloc] initTextCell:tokenString]];
+        
+        NSString * displayString = ([[self delegate] respondsToSelector:@selector(tokenField:displayStringForRepresentedObject:)]?[self.tkd tokenField:self displayStringForRepresentedObject:token.content]:tokenString);
+        
+        [token setAttachmentCell:[[TKTokenFieldAttachmentCell alloc] initTextCell:displayString]];
     }
     return token;
 }
 
+//Called when the token is created manually or through a setObjectValue
 - (void) prepareInsertion:(TKTokenFieldAttachment *) att range:(NSRange) range rect:(NSRect) rect {
     if ([[self delegate] respondsToSelector:@selector(tokenField:attachment:willBeInsertedInRange:inRect:)]) {
-        [(id<TKTokenFieldDelegate>)[self delegate] tokenField:self attachment:att willBeInsertedInRange:range inRect:rect];
+        [self.tkd tokenField:self attachment:att willBeInsertedInRange:range inRect:rect];
     }
 }
 
-- (void) finishInsertion:(TKTokenFieldAttachment *) att range:(NSRange) range rect:(NSRect) rect {
+//Called only when the token is created manually
+- (void) finishInsertion:(TKTokenFieldAttachment *)att range:(NSRange) range rect:(NSRect) rect {
     if ([[self delegate] respondsToSelector:@selector(tokenField:attachment:hasBeenInsertedInRange:inRect:)]) {
-        [(id<TKTokenFieldDelegate>)[self delegate] tokenField:self attachment:att hasBeenInsertedInRange:range inRect:rect];
+        [self.tkd tokenField:self attachment:att hasBeenInsertedInRange:range inRect:rect];
+    }
+}
+
+- (void) tokenSelected:(TKTokenFieldAttachment *)att range:(NSRange) range rect:(NSRect) rect {
+    if ([[self delegate] respondsToSelector:@selector(tokenField:attachment:hasBeenSelectedInRange:inRect:)]) {
+        [self.tkd tokenField:self attachment:att hasBeenSelectedInRange:range inRect:rect];
     }
 }
 
@@ -76,13 +104,17 @@
     
     NSMutableAttributedString * ms = [NSMutableAttributedString new];
     for (id obj in (NSArray *)objectValue) {
-        NSString * desc = [(id<TKTokenFieldDelegate>)self.delegate tokenField:(TKTokenField*)self displayStringForRepresentedObject:obj]?:obj;
+        NSRange effectiveRange = NSMakeRange(ms.length, 0);
+        TKTokenFieldAttachment * att = [self makeTokenFieldAttachment:obj editingString:nil range:effectiveRange];
+        TKTokenTextView *textView = [(TKTokenFieldCell*)self.cell tokenTextView];
         
-        TKTokenFieldAttachment * att = [self makeTokenFieldAttachment:desc range:NSMakeRange(ms.length, 0)];
-        att.content = obj;
-        [self prepareInsertion:att range:NSMakeRange(ms.length, 0) rect:NSZeroRect];
+        NSRect rect = textView ? [textView firstRectForCharacterRange:effectiveRange actualRange:nil]:NSZeroRect; //screen coordinates
+        rect = [self.window convertRectFromScreen:rect];
+        rect.origin = [self convertPoint:rect.origin fromView:nil];
+        
+        [self prepareInsertion:att range:effectiveRange rect:rect];
         [ms appendAttributedString:[NSAttributedString attributedStringWithAttachment:att]];
-        [self finishInsertion:att range:NSMakeRange(ms.length, 0) rect:NSZeroRect];
+        //
     }
     
     [super setObjectValue:ms];
@@ -121,6 +153,26 @@
         }
     }
     return nil;
+}
+
+- (void) refreshAttachment:(TKTokenFieldAttachment *) attachmentToBeRefreshed {
+    NSAttributedString * as = self.attributedStringValue;
+    NSUInteger length = as.length;
+    NSRange effectiveRange = NSMakeRange(0, 0);
+    
+    TKTokenFieldAttachment * attachment;
+    while (NSMaxRange(effectiveRange) < length) {
+        attachment = [as attribute:NSAttachmentAttributeName atIndex:NSMaxRange(effectiveRange) effectiveRange:&effectiveRange];
+        if (attachmentToBeRefreshed == attachment) {
+            TKTokenTextView *textView = [(TKTokenFieldCell*)self.cell tokenTextView];
+
+            NSRect rect = textView ? [textView firstRectForCharacterRange:effectiveRange actualRange:nil]:NSZeroRect; //screen coordinates
+            rect = [self.window convertRectFromScreen:rect];
+            rect.origin = [self convertPoint:rect.origin fromView:nil];
+
+            [self prepareInsertion:attachment range:effectiveRange rect:rect];
+        }
+    }
 }
 
 /*

@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "TKTokenField.h"
 
-@interface ViewController : NSViewController<TKTokenFieldDelegate>
+@interface ViewController : NSViewController<TKTokenFieldDelegate, NSTableViewDataSource>
 
 @property (strong, readwrite) NSArray * allCountries;
+@property (strong, readwrite) NSMutableArray * tableCountries;
+
 @property (weak, readwrite) IBOutlet TKTokenField * tkf;
-@property (weak, readwrite) IBOutlet NSTextField * tf;
+@property (weak, readwrite) IBOutlet NSTableView * tableView;
 
 @end
 

@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, OEXTokenJoinStyle) {
     OEXTokenJoinStyle _joinStyle;
 }
 
+@property (readwrite,strong) NSMutableDictionary* extraAttributes;
 @property (readwrite,strong) NSColor* textColor;
 @property (readwrite,strong) NSColor* alternateTextColor;
 @end

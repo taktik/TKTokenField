@@ -58,7 +58,7 @@
     
     NSAttributedString * tokenString = [self.textStorage attributedSubstringFromRange:effectiveRange];
 
-    TKTokenFieldAttachment *token = [self.tokenField makeTokenFieldAttachment:[tokenString string] range:effectiveRange];
+    TKTokenFieldAttachment *token = [self.tokenField makeTokenFieldAttachment:nil editingString:[tokenString string] range:effectiveRange];
     NSAttributedString * replacementString = [NSAttributedString attributedStringWithAttachment:token];
 
     NSRect rect = [self firstRectForCharacterRange:effectiveRange actualRange:nil]; //screen coordinates
@@ -73,9 +73,24 @@
     [self.tokenField finishInsertion:token range:effectiveRange rect:rect];
 }
 
+- (BOOL) becomeFirstResponder {
+    [self.tokenField setIsBeingEdited:YES];
+    
+    return [super becomeFirstResponder];
+}
+
+- (BOOL) resignFirstResponder {
+    [self.tokenField setIsBeingEdited:NO];
+    [self makeToken:nil];
+
+    return [super resignFirstResponder];
+}
+
 - (void) keyDown:(NSEvent *)theEvent {
     if (theEvent.characters.length && [self.tokenizingCharacterSet characterIsMember:[theEvent.characters characterAtIndex:0]]) {
         [self makeToken:theEvent];
+    } else if (theEvent.characters.length && [theEvent.characters characterAtIndex:0]==9) {
+        [[self window] makeFirstResponder:[self nextValidKeyView]?:[(NSTextField*)self.delegate nextValidKeyView]];
     } else {
         [super keyDown:theEvent];
         
@@ -86,9 +101,7 @@
         if (initiallyTypedTextRange.length>2) {
             NSString * initiallyTypedText = [[self.textStorage attributedSubstringFromRange:initiallyTypedTextRange] string];
             
-            NSLog(@"Previous: %@, Current: %@",self.previousCompletionString,initiallyTypedText);
             if (![self.previousCompletionString isEqualToString:initiallyTypedText]) {
-                NSLog(@"complete it!");
                 int64_t delayInSeconds = self.completionDelay;
                 
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -175,8 +188,17 @@
     rect = [self.window convertRectFromScreen:rect];
     rect.origin = [self convertPoint:rect.origin fromView:nil];
     
+    NSRect oRect = rect;
+    
     rect.origin.y += 6;
     rect.size.height = 12;
     [self.tokenField scrollRectToVisible:rect];
+    
+    if (selectedRange.length==1) {
+        NSRange effectiveRange;
+        NSTextAttachment * token = [[self.textStorage attributedSubstringFromRange:selectedRange] attribute:NSAttachmentAttributeName atIndex:0 effectiveRange:&effectiveRange];
+        
+        [self.tokenField tokenSelected:(TKTokenFieldAttachment*)token range:selectedRange rect:oRect];
+    }
 }
 @end

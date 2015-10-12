@@ -21,8 +21,8 @@ FOUNDATION_EXPORT const unsigned char TKTokenFieldVersionString[];
 #import <TKTokenField/TKTokenFieldAttachmentCell.h>
 
 @class TKTokenField,TKTokenFieldAttachment;
-@protocol TKTokenFieldDelegate
 
+@protocol TKTokenFieldDelegate
 @optional
 // Each element in the array should be an NSString or an array of NSStrings.
 // substring is the partial string that is being completed.  tokenIndex is the index of the token being completed.
@@ -41,10 +41,12 @@ FOUNDATION_EXPORT const unsigned char TKTokenFieldVersionString[];
 - (id)tokenField:(TKTokenField *)tokenField representedObjectForEditingString: (NSString *)editingString;
 
 //Or make the attachment yourself
-- (TKTokenFieldAttachment *) tokenField:(TKTokenField*)tokenField makeAttachmentForString:(NSString *) string inRange:(NSRange) range;
+- (TKTokenFieldAttachment *) tokenField:(TKTokenField*)tokenField makeAttachment:(id)representedObject editingString:(NSString *) string inRange:(NSRange) range;
 //The rect is in tokenField coordinates
 - (void) tokenField:(TKTokenField*)tokenField attachment:(TKTokenFieldAttachment*)attachment willBeInsertedInRange:(NSRange)range inRect:(NSRect) rect;
 - (void) tokenField:(TKTokenField*)tokenField attachment:(TKTokenFieldAttachment*)attachment hasBeenInsertedInRange:(NSRange)range inRect:(NSRect) rect;
+- (void) tokenField:(TKTokenField*)tokenField attachment:(TKTokenFieldAttachment*)attachment hasBeenSelectedInRange:(NSRange)range inRect:(NSRect) rect;
+
 
 // We put the string on the pasteboard before calling this delegate method.
 // By default, we write the NSStringPboardType as well as an array of NSStrings.
@@ -62,12 +64,12 @@ FOUNDATION_EXPORT const unsigned char TKTokenFieldVersionString[];
 @end
 
 @interface TKTokenField : NSTextField
+@property (assign,readwrite) BOOL isBeingEdited;
 
 - (NSTokenStyle)tokenStyle;
 - (void)setTokenStyle:(NSTokenStyle)style;
 
-- (TKTokenFieldAttachment *)makeTokenFieldAttachment:(NSString*) tokenString range:(NSRange) range;
-
+- (TKTokenFieldAttachment *)makeTokenFieldAttachment:(id)representedObject editingString:(NSString*)tokenString range:(NSRange) range;
 // Completion delay...
 + (NSTimeInterval)defaultCompletionDelay;
 - (NSTimeInterval)completionDelay;
@@ -79,8 +81,9 @@ FOUNDATION_EXPORT const unsigned char TKTokenFieldVersionString[];
 - (NSCharacterSet *)tokenizingCharacterSet;
 
 - (TKTokenFieldAttachment *) attachmentForRepresentedObject:(id) object;
+- (void) refreshAttachment:(TKTokenFieldAttachment *) attachmentToBeRefreshed;
 
 - (void) prepareInsertion:(TKTokenFieldAttachment *) att range:(NSRange) range rect:(NSRect) rect;
 - (void) finishInsertion:(TKTokenFieldAttachment *) att range:(NSRange) range rect:(NSRect) rect;
-
+- (void) tokenSelected:(TKTokenFieldAttachment *)att range:(NSRange) range rect:(NSRect) rect;
 @end
