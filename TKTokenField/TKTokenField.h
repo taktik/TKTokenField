@@ -15,10 +15,10 @@ FOUNDATION_EXPORT double TKTokenFieldVersionNumber;
 //! Project version string for TKTokenField.
 FOUNDATION_EXPORT const unsigned char TKTokenFieldVersionString[];
 
-#import <TKTokenField/TKTokenFieldCell.h>
-#import <TKTokenField/TKTokenTextView.h>
-#import <TKTokenField/TKTokenFieldAttachment.h>
-#import <TKTokenField/TKTokenFieldAttachmentCell.h>
+#import "TKTokenFieldCell.h"
+#import "TKTokenTextView.h"
+#import "TKTokenFieldAttachment.h"
+#import "TKTokenFieldAttachmentCell.h"
 
 @class TKTokenField,TKTokenFieldAttachment;
 @protocol TKTokenFieldDelegate
