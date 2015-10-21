@@ -15,7 +15,6 @@
 		A5C3842E1B2FF7C500845F60 /* TKTokenField.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5C384161B2FF7C400845F60 /* TKTokenField.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5C3844F1B2FF9F100845F60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383DB1B2DE47000845F60 /* AppDelegate.m */; };
 		A5C384501B2FF9F100845F60 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383E01B2DE47000845F60 /* ViewController.m */; };
-		A5C384511B2FF9F100845F60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C383DD1B2DE47000845F60 /* main.m */; };
 		A5C384611B2FFA2C00845F60 /* TKTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384531B2FFA0B00845F60 /* TKTokenField.m */; };
 		A5C384621B2FFA2C00845F60 /* TKTokenFieldAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384551B2FFA0B00845F60 /* TKTokenFieldAttachment.m */; };
 		A5C384631B2FFA2C00845F60 /* TKTokenFieldAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C384571B2FFA0B00845F60 /* TKTokenFieldAttachmentCell.m */; };
@@ -69,10 +68,8 @@
 
 /* Begin PBXFileReference section */
 		A5C383D51B2DE47000845F60 /* CustomTokenField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomTokenField.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5C383D91B2DE47000845F60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5C383DA1B2DE47000845F60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CustomTokenField/AppDelegate.h; sourceTree = "<group>"; };
 		A5C383DB1B2DE47000845F60 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CustomTokenField/AppDelegate.m; sourceTree = "<group>"; };
-		A5C383DD1B2DE47000845F60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5C383DF1B2DE47000845F60 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = CustomTokenField/ViewController.h; sourceTree = "<group>"; };
 		A5C383E01B2DE47000845F60 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = CustomTokenField/ViewController.m; sourceTree = "<group>"; };
 		A5C383E21B2DE47000845F60 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CustomTokenField/Images.xcassets; sourceTree = "<group>"; };
@@ -144,16 +141,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A5C383D81B2DE47000845F60 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A5C383D91B2DE47000845F60 /* Info.plist */,
-				A5C383DD1B2DE47000845F60 /* main.m */,
-			);
-			name = "Supporting Files";
-			path = CustomTokenField;
-			sourceTree = "<group>";
-		};
 		A5C384171B2FF7C400845F60 /* TKTokenField */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +193,6 @@
 				A5C383E01B2DE47000845F60 /* ViewController.m */,
 				A5C383E21B2DE47000845F60 /* Images.xcassets */,
 				A5C383E41B2DE47000845F60 /* Main.storyboard */,
-				A5C383D81B2DE47000845F60 /* Supporting Files */,
 			);
 			name = TestApp;
 			sourceTree = "<group>";
@@ -359,7 +345,6 @@
 			files = (
 				A5C3844F1B2FF9F100845F60 /* AppDelegate.m in Sources */,
 				A5C384501B2FF9F100845F60 /* ViewController.m in Sources */,
-				A5C384511B2FF9F100845F60 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
