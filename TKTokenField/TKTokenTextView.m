@@ -135,7 +135,12 @@
                                         NSString * finallyTypedText = [[self.textStorage attributedSubstringFromRange:finallyTypedTextRange] string];
                                         
                                         if ([finallyTypedText isEqualToString:initiallyTypedText]) {
-                                            self.completions = suggestions;
+                                            if (suggestions.count && ![suggestions.firstObject hasPrefix:finallyTypedText]) {
+                                                self.completions = [@[finallyTypedText] arrayByAddingObjectsFromArray:suggestions];
+                                            } else {
+                                                self.completions = suggestions;
+                                            }
+                                            
                                             self.indexOfCompletion = preferredItem;
                                             self.completionRange = finallyTypedTextRange;
                                             self.previousCompletionString = finallyTypedText;
