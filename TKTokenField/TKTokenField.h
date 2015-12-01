@@ -61,6 +61,9 @@ FOUNDATION_EXPORT const unsigned char TKTokenFieldVersionString[];
 
 // This method allows you to change the style for individual tokens as well as have mixed text and tokens.
 - (NSTokenStyle)tokenField:(TKTokenField *)tokenField styleForRepresentedObject:(id)representedObject;
+
+// Changing the nextKeyView
+- (NSView*)nextValidKeyViewForTokenField:(TKTokenField *)tokenField;
 @end
 
 @interface TKTokenField : NSTextField

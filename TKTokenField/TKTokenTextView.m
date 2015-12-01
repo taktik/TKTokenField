@@ -90,7 +90,11 @@
     if (theEvent.characters.length && [self.tokenizingCharacterSet characterIsMember:[theEvent.characters characterAtIndex:0]]) {
         [self makeToken:theEvent];
     } else if (theEvent.characters.length && [theEvent.characters characterAtIndex:0]==9) {
-        [[self window] makeFirstResponder:[self nextValidKeyView]?:[(NSTextField*)self.delegate nextValidKeyView]];
+        if ([self.tokenField.delegate respondsToSelector:@selector(nextValidKeyViewForTokenField:)]) {
+            [[self window] makeFirstResponder:[(id<TKTokenFieldDelegate>)self.tokenField.delegate nextValidKeyViewForTokenField:self.tokenField]?:[(NSTextField*)self.delegate nextValidKeyView]];
+        } else {
+            [[self window] makeFirstResponder:[self nextValidKeyView]?:[(NSTextField*)self.delegate nextValidKeyView]];
+        }
     } else {
         [super keyDown:theEvent];
         
