@@ -26,6 +26,8 @@
 		A5C384691B2FFA3800845F60 /* TKTokenFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C384581B2FFA0B00845F60 /* TKTokenFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5C3846A1B2FFA3800845F60 /* TKTokenTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3845A1B2FFA0B00845F60 /* TKTokenTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5C3846C1B2FFA4A00845F60 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C3846B1B2FFA4A00845F60 /* Cocoa.framework */; };
+		A5D18E871D38F63A003013CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C3846B1B2FFA4A00845F60 /* Cocoa.framework */; };
+		A5D18E891D38F6C3003013CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D18E881D38F6C2003013CE /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,7 @@
 		A5C3845A1B2FFA0B00845F60 /* TKTokenTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKTokenTextView.h; path = TKTokenField/TKTokenTextView.h; sourceTree = SOURCE_ROOT; };
 		A5C3845B1B2FFA0B00845F60 /* TKTokenTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKTokenTextView.m; path = TKTokenField/TKTokenTextView.m; sourceTree = SOURCE_ROOT; };
 		A5C3846B1B2FFA4A00845F60 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		A5D18E881D38F6C2003013CE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D18E871D38F63A003013CE /* Cocoa.framework in Frameworks */,
 				A5C3842D1B2FF7C500845F60 /* TKTokenField.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +191,7 @@
 		A5C3844E1B2FF93300845F60 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				A5D18E881D38F6C2003013CE /* main.m */,
 				A5C383DA1B2DE47000845F60 /* AppDelegate.h */,
 				A5C383DB1B2DE47000845F60 /* AppDelegate.m */,
 				A5C383DF1B2DE47000845F60 /* ViewController.h */,
@@ -344,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C3844F1B2FF9F100845F60 /* AppDelegate.m in Sources */,
+				A5D18E891D38F6C3003013CE /* main.m in Sources */,
 				A5C384501B2FF9F100845F60 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

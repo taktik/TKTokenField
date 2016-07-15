@@ -52,25 +52,33 @@
     return NSMakeRange(NSNotFound, 0);
 }
 
-- (void) makeToken:(NSEvent *) theEvent {
-    NSRange effectiveRange = [self rangeOfAttachment:nil indexOfToken:nil];
-    if (effectiveRange.location == NSNotFound) { return; }
-    
-    NSAttributedString * tokenString = [self.textStorage attributedSubstringFromRange:effectiveRange];
-
-    TKTokenFieldAttachment *token = [self.tokenField makeTokenFieldAttachment:nil editingString:[tokenString string] range:effectiveRange];
+- (void) insertToken:(TKTokenFieldAttachment*) token inRange:(NSRange) effectiveRange {
     NSAttributedString * replacementString = [NSAttributedString attributedStringWithAttachment:token];
-
+    
     NSRect rect = [self firstRectForCharacterRange:effectiveRange actualRange:nil]; //screen coordinates
     rect = [self.window convertRectFromScreen:rect];
     rect.origin = [self convertPoint:rect.origin fromView:nil];
-
+    
     [self.tokenField prepareInsertion:token range:effectiveRange rect:rect];
     if ([self shouldChangeTextInRange:effectiveRange replacementString:replacementString.string]) {
         [self.textStorage replaceCharactersInRange:effectiveRange withAttributedString:replacementString];
         [self didChangeText];
     }
     [self.tokenField finishInsertion:token range:effectiveRange rect:rect];
+}
+
+- (void) insertTokenWithString:(NSAttributedString*) tokenString inRange:(NSRange) effectiveRange {
+    [self insertToken:[self.tokenField makeTokenFieldAttachment:nil editingString:[tokenString string] range:effectiveRange] inRange:effectiveRange];
+}
+
+
+- (void) makeToken:(NSEvent *) theEvent {
+    NSRange effectiveRange = [self rangeOfAttachment:nil indexOfToken:nil];
+    if (effectiveRange.location == NSNotFound) { return; }
+    
+    NSAttributedString * tokenString = [self.textStorage attributedSubstringFromRange:effectiveRange];
+
+    [self insertTokenWithString:tokenString inRange:effectiveRange];
 }
 
 - (BOOL) becomeFirstResponder {
@@ -84,6 +92,97 @@
     [self makeToken:nil];
 
     return [super resignFirstResponder];
+}
+
+- (NSArray <NSString *> *) writablePasteboardTypes {
+    return [super.writablePasteboardTypes?:@[] arrayByAddingObjectsFromArray:@[@"org.taktik.TKToken"]];
+}
+
+- (NSString *)preferredPasteboardTypeFromArray:(NSArray<NSString *> *)availableTypes
+                    restrictedToTypesFromArray:(NSArray<NSString *> *)allowedTypes {
+    if ([availableTypes containsObject:@"org.taktik.TKToken"] && (!allowedTypes || [allowedTypes containsObject:@"org.taktik.TKToken"])) {
+        return @"org.taktik.TKToken";
+    }
+    return [super preferredPasteboardTypeFromArray:availableTypes restrictedToTypesFromArray:allowedTypes];
+}
+
+- (BOOL)writeSelectionToPasteboard:(NSPasteboard *)pboard type:(NSString *)type {
+    NSAttributedString * as = [self.textStorage attributedSubstringFromRange:self.selectedRange];
+
+    NSUInteger length = as.length;
+    NSRange effectiveRange = NSMakeRange(0, 0);
+    
+    NSMutableArray * tokenStrings = [NSMutableArray new];
+    NSMutableArray * tokens = [NSMutableArray new];
+    
+    TKTokenFieldAttachment* attachment;
+    NSMutableString * acc = [NSMutableString new];
+    while (NSMaxRange(effectiveRange) < length) {
+        attachment = [as attribute:NSAttachmentAttributeName atIndex:NSMaxRange(effectiveRange) effectiveRange:&effectiveRange];
+        if (attachment && [attachment isKindOfClass:[TKTokenFieldAttachment class]]) {
+            if (acc.length) {
+                [tokenStrings addObject:acc];
+                [acc setString:@""];
+            }
+            [tokenStrings addObject:[(NSCell*)attachment.attachmentCell stringValue]];
+            [tokens addObject:attachment];
+        } else {
+            [acc appendString:[[as string] substringWithRange:effectiveRange]];
+        }
+    }
+    if (acc.length) {
+        [tokenStrings addObject:acc];
+    }
+    if ([type isEqualToString:@"NSStringPboardType"]) {
+        [pboard writeObjects:tokenStrings];
+    } else if ([type isEqualToString:@"org.taktik.TKToken"]) {
+        [pboard writeObjects:tokens];
+    }
+    return YES;
+}
+
+- (BOOL)readSelectionFromPasteboard:(NSPasteboard *)pboard type:(NSString *)type {
+    if ([self.tokenField.delegate respondsToSelector:@selector(tokenField:readFromPasteboard:)]) {
+        NSArray * items = [(id<TKTokenFieldDelegate>)self.tokenField.delegate tokenField:self.tokenField readFromPasteboard:pboard];
+        for (NSString * item in items) {
+            [self insertTokenWithString:[[NSAttributedString alloc] initWithString:item] inRange:self.rangeForUserTextChange];
+        }
+    } else {
+        if ([type isEqualToString:@"org.taktik.TKToken"]) {
+            NSArray * items = [pboard readObjectsForClasses:@[[TKTokenFieldAttachment class]] options:NULL];
+            for (TKTokenFieldAttachment * token in items) {
+                [self insertToken:token inRange:self.rangeForUserTextChange];
+            }
+        } else {
+            NSArray * items = [pboard readObjectsForClasses:@[[NSAttributedString class]] options:NULL];
+            for (NSAttributedString * it in items) {
+                NSUInteger length = it.length;
+                NSRange effectiveRange = NSMakeRange(0, 0);
+                NSMutableString * acc = [NSMutableString new];
+                while (NSMaxRange(effectiveRange) < length) {
+                    id attachment = [it attribute:NSAttachmentAttributeName atIndex:NSMaxRange(effectiveRange) effectiveRange:&effectiveRange];
+                    if (attachment && [attachment isKindOfClass:[TKTokenFieldAttachment class]]) {
+                        if (acc.length) {
+                            for (NSString * item in [acc componentsSeparatedByString:@"\n"]) {
+                                [self insertTokenWithString:[[NSAttributedString alloc] initWithString:item] inRange:self.rangeForUserTextChange];
+                            }
+                            [acc setString:@""];
+                        }
+                        [self insertToken:attachment inRange:self.rangeForUserTextChange];
+                    } else {
+                        [acc appendString:[[it string] substringWithRange:effectiveRange]];
+                    }
+                }
+                if (acc.length) {
+                    for (NSString * item in [acc componentsSeparatedByString:@"\n"]) {
+                        [self insertTokenWithString:[[NSAttributedString alloc] initWithString:item] inRange:self.rangeForUserTextChange];
+                    }
+                    [acc setString:@""];
+                }
+            }
+        }
+    }
+    return YES;
 }
 
 - (void) keyDown:(NSEvent *)theEvent {

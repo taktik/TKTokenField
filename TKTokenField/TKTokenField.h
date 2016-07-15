@@ -51,7 +51,6 @@ FOUNDATION_EXPORT const unsigned char TKTokenFieldVersionString[];
 // We put the string on the pasteboard before calling this delegate method.
 // By default, we write the NSStringPboardType as well as an array of NSStrings.
 - (BOOL)tokenField:(TKTokenField *)tokenField writeRepresentedObjects:(NSArray *)objects toPasteboard:(NSPasteboard *)pboard;
-
 // Return an array of represented objects to add to the token field.
 - (NSArray *)tokenField:(TKTokenField *)tokenField readFromPasteboard:(NSPasteboard *)pboard;
 

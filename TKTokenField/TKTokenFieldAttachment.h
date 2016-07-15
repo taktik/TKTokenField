@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TKTokenFieldAttachment : NSTextAttachment
+@interface TKTokenFieldAttachment : NSTextAttachment <NSPasteboardWriting, NSPasteboardReading>
 @property(readwrite, strong) id content;
 @end
