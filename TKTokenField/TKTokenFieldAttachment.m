@@ -20,7 +20,7 @@
 }
 
 - (nullable id)pasteboardPropertyListForType:(NSString *)type {
-    return [NSArchiver archivedDataWithRootObject:@{@"displayString":((NSCell*)self.attachmentCell).stringValue?:@"",@"contentData":self.content}];
+    return [NSKeyedArchiver archivedDataWithRootObject:@{@"displayString":((NSCell*)self.attachmentCell).stringValue?:@"",@"contentData":self.content}];
 }
 
 + (NSArray<NSString *> *)readableTypesForPasteboard:(NSPasteboard *)pasteboard {
@@ -30,7 +30,7 @@
 - (nullable id)initWithPasteboardPropertyList:(id)propertyList ofType:(NSString *)type {
     if ([type isEqualToString:@"org.taktik.TKToken"]) {
         TKTokenFieldAttachment * token = [TKTokenFieldAttachment new];
-        NSDictionary * dict = [NSUnarchiver unarchiveObjectWithData:propertyList];
+        NSDictionary * dict = [NSKeyedUnarchiver unarchiveObjectWithData:propertyList];
         [token setContent:[dict objectForKey:@"contentData"]];
         [token setAttachmentCell:[[TKTokenFieldAttachmentCell alloc] initTextCell:[dict objectForKey:@"displayString"]]];
         return token;
