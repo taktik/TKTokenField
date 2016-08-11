@@ -15,9 +15,12 @@
 
 - (id) initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
-        
     }
     return self;
+}
+
+- (NSArray*) acceptableDragTypes {
+    return [[super acceptableDragTypes] arrayByAddingObject:@"org.taktik.TKToken"];
 }
 
 - (TKTokenField*) tokenField {
