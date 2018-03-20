@@ -239,4 +239,8 @@
     
     return intrinsicSize;
 }
+
+- (void) bind:(NSBindingName)binding toObject:(id)observable withKeyPath:(NSString *)keyPath options:(NSDictionary<NSBindingOption,id> *)options {
+    [super bind:binding toObject:observable withKeyPath:keyPath options:options];
+}
 @end

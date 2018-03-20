@@ -144,14 +144,33 @@
     return YES;
 }
 
+- (NSAttributedString*) as:(NSAttributedString*)as byAppendingAs:(NSAttributedString*)oAs {
+    NSMutableAttributedString* res = [as mutableCopy];
+    [res appendAttributedString:oAs];
+    
+    return res;
+}
+
 - (BOOL)readSelectionFromPasteboard:(NSPasteboard *)pboard type:(NSString *)type {
+    NSRange initiallyTypedTextRange = [self rangeOfAttachment:nil indexOfToken:nil];
+    if (self.selectedRange.length>0 && self.selectedRange.location>=initiallyTypedTextRange.location) {
+        initiallyTypedTextRange.length = MIN(initiallyTypedTextRange.length, self.selectedRange.location - initiallyTypedTextRange.location);
+    }
     if ([self.tokenField.delegate respondsToSelector:@selector(tokenField:readFromPasteboard:)]) {
         NSArray * items = [(id<TKTokenFieldDelegate>)self.tokenField.delegate tokenField:self.tokenField readFromPasteboard:pboard];
         for (NSString * item in items) {
-            [self insertTokenWithString:[[NSAttributedString alloc] initWithString:item] inRange:self.rangeForUserTextChange];
+            [self insertText:item replacementRange:self.rangeForUserTextChange];
+            if (item != items.lastObject) {
+                [self makeToken:nil];
+                initiallyTypedTextRange = NSMakeRange(0,0);
+         }
         }
     } else {
         if ([type isEqualToString:@"org.taktik.TKToken"]) {
+            if (initiallyTypedTextRange.length) {
+                [self makeToken:nil];
+                initiallyTypedTextRange = NSMakeRange(0,0);
+            }
             NSArray * items = [pboard readObjectsForClasses:@[[TKTokenFieldAttachment class]] options:NULL];
             for (TKTokenFieldAttachment * token in items) {
                 [self insertToken:token inRange:self.rangeForUserTextChange];
@@ -166,10 +185,18 @@
                     id attachment = [it attribute:NSAttachmentAttributeName atIndex:NSMaxRange(effectiveRange) effectiveRange:&effectiveRange];
                     if (attachment && [attachment isKindOfClass:[TKTokenFieldAttachment class]]) {
                         if (acc.length) {
-                            for (NSString * item in [acc componentsSeparatedByString:@"\n"]) {
-                                [self insertTokenWithString:[[NSAttributedString alloc] initWithString:item] inRange:self.rangeForUserTextChange];
+                            NSArray * strings = [acc componentsSeparatedByString:@"\n"];
+                            for (NSString * item in strings) {
+                                [self insertText:item replacementRange:self.rangeForUserTextChange];
+                                if (item != strings.lastObject) {
+                                    [self makeToken:nil];
+                                    initiallyTypedTextRange = NSMakeRange(0,0);
+                                }
                             }
                             [acc setString:@""];
+                        } else if (initiallyTypedTextRange.length) {
+                            [self makeToken:nil];
+                            initiallyTypedTextRange = NSMakeRange(0,0);
                         }
                         [self insertToken:attachment inRange:self.rangeForUserTextChange];
                     } else {
@@ -177,8 +204,13 @@
                     }
                 }
                 if (acc.length) {
-                    for (NSString * item in [acc componentsSeparatedByString:@"\n"]) {
-                        [self insertTokenWithString:[[NSAttributedString alloc] initWithString:item] inRange:self.rangeForUserTextChange];
+                    NSArray * strings = [acc componentsSeparatedByString:@"\n"];
+                    for (NSString * item in strings) {
+                        [self insertText:item replacementRange:self.rangeForUserTextChange];
+                        if (item != strings.lastObject) {
+                            [self makeToken:nil];
+                            initiallyTypedTextRange = NSMakeRange(0,0);
+                      }
                     }
                     [acc setString:@""];
                 }
@@ -311,5 +343,9 @@
         
         [self.tokenField tokenSelected:(TKTokenFieldAttachment*)token range:selectedRange rect:oRect];
     }
+}
+
+- (BOOL)isAutomaticSpellingCorrectionEnabled {
+    return NO;
 }
 @end
