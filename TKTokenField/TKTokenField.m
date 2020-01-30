@@ -44,9 +44,9 @@
     }
     
     // initialize...
-    [_cell setTokenStyle: NSDefaultTokenStyle];
-    [_cell setCompletionDelay: [_cell defaultCompletionDelay]];
-    [_cell setTokenizingCharacterSet: [_cell defaultTokenizingCharacterSet]];
+    [self.cell setTokenStyle: NSDefaultTokenStyle];
+    [self.cell setCompletionDelay: [self.cell defaultCompletionDelay]];
+    [self.cell setTokenizingCharacterSet: [self.cell defaultTokenizingCharacterSet]];
     
     return self;
 }
@@ -184,11 +184,11 @@
 
 // Style...
 - (NSTokenStyle)tokenStyle {
-    return [_cell tokenStyle];
+    return [self.cell tokenStyle];
 }
 
 - (void)setTokenStyle:(NSTokenStyle)style {
-    [_cell setTokenStyle: style];
+    [self.cell setTokenStyle: style];
 }
 
 // Completion delay...
@@ -197,11 +197,11 @@
 }
 
 - (NSTimeInterval)completionDelay {
-    return [_cell completionDelay];
+    return [self.cell completionDelay];
 }
 
 - (void)setCompletionDelay:(NSTimeInterval)delay {
-    [_cell setCompletionDelay: delay];
+    [self.cell setCompletionDelay: delay];
 }
 
 // Character set...
@@ -210,11 +210,11 @@
 }
 
 - (void)setTokenizingCharacterSet:(NSCharacterSet *)characterSet {
-    [_cell setTokenizingCharacterSet: characterSet];
+    [self.cell setTokenizingCharacterSet: characterSet];
 }
 
 - (NSCharacterSet *)tokenizingCharacterSet {
-    return [_cell tokenizingCharacterSet];
+    return [self.cell tokenizingCharacterSet];
 }
 
 -(NSSize)intrinsicContentSize {
